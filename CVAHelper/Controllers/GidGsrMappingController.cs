@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using CVAHelper.Data.Interface;
@@ -25,6 +26,28 @@ namespace CVAHelper.Controllers
         {
             var gidGsrMappings = _gidGsrMappingRepository.GetAllMappingsWithTenor();
             return _mapper.Map<IEnumerable<GidGsrMapping>, IEnumerable<GidGsrMappingViewModel>>(gidGsrMappings);
+        }
+
+        [HttpPost("[action]")]
+        public void UpdateGidGsrMappings([FromBody] string temp)
+        {
+            var gidGsrMappingViewModel = new GidGsrMappingViewModel();
+            if (gidGsrMappingViewModel == null)
+            {
+                //return BadRequest("Invalid passed data");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                // return BadRequest(ModelState);
+            }
+            try
+            {
+                _gidGsrMappingRepository.Update(_mapper.Map<GidGsrMappingViewModel, GidGsrMapping>(gidGsrMappingViewModel));
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }
