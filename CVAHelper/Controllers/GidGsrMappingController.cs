@@ -29,9 +29,8 @@ namespace CVAHelper.Controllers
         }
 
         [HttpPost("[action]")]
-        public void UpdateGidGsrMappings([FromBody] string temp)
+        public void UpdateGidGsrMappings([FromBody] GidGsrMappingViewModel gidGsrMappingViewModel)
         {
-            var gidGsrMappingViewModel = new GidGsrMappingViewModel();
             if (gidGsrMappingViewModel == null)
             {
                 //return BadRequest("Invalid passed data");
