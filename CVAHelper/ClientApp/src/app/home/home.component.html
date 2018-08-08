@@ -2,6 +2,8 @@
 
 <p>GID GSR Mapping</p>
 <button (click)="getSelectedRows()">Export</button>
+<input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
+<button type="button" class="btn btn-info" (click)="Upload()">Import</button>
 <!--<p *ngIf="!forecasts"><em>Loading...</em></p>
 
 <table class='table' *ngIf="forecasts">
@@ -23,13 +25,12 @@
   </tbody>
 </table>-->
 
-<ag-grid-angular
-                 #agGrid
+<ag-grid-angular #agGrid
                  style="width: 100%; height: 500px;"
                  class="ag-theme-balham"
                  [rowData]="rowData"
                  [columnDefs]="columnDefs"
                  [enableSorting]="true"
                  [enableFilter]="true"
-                 rowSelection ="multiple">
+                 rowSelection="multiple">
 </ag-grid-angular>
