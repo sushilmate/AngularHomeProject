@@ -9,7 +9,7 @@
     <span class="glyphicon glyphicon-folder-open"></span>  Choose File
     <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
   </label>
-  <button type="button" class="btn btn-default btn-sm">
+  <button type="button" class="btn btn-default btn-sm" (click)="upload()">
     <span class="glyphicon glyphicon-upload"></span> Upload
   </button>
 </div>

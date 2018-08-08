@@ -41,7 +41,7 @@ export class HomeComponent {
     this.file = event.target.files[0];
   }
 
-  Upload() {
+  upload() {
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
