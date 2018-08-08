@@ -1,36 +1,26 @@
 <h1>PRISM</h1>
-
 <p>GID GSR Mapping</p>
-<button (click)="getSelectedRows()">Export</button>
-<input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx">
-<button type="button" class="btn btn-info" (click)="Upload()">Import</button>
-<!--<p *ngIf="!forecasts"><em>Loading...</em></p>
+<button type="button" class="btn btn-default btn-sm" (click)="getSelectedRows()">
+  <span class="glyphicon glyphicon-download-alt"></span> Download
+</button>
 
-<table class='table' *ngIf="forecasts">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.dateFormatted }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
-    </tr>
-  </tbody>
-</table>-->
-
-<ag-grid-angular #agGrid
-                 style="width: 100%; height: 500px;"
-                 class="ag-theme-balham"
-                 [rowData]="rowData"
-                 [columnDefs]="columnDefs"
-                 [enableSorting]="true"
-                 [enableFilter]="true"
-                 rowSelection="multiple">
-</ag-grid-angular>
+<div style="float:right">
+  <label class="btn btn-default btn-sm">
+    Choose File
+    <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
+  </label>
+  <button type="button" class="btn btn-default btn-sm">
+    <span class="glyphicon glyphicon-upload"></span> Upload
+  </button>
+</div>
+<div style="margin-top:5px">
+  <ag-grid-angular #agGrid
+                   style="width: 100%; height: 500px;"
+                   class="ag-theme-balham"
+                   [rowData]="rowData"
+                   [columnDefs]="columnDefs"
+                   [enableSorting]="true"
+                   [enableFilter]="true"
+                   rowSelection="multiple">
+  </ag-grid-angular>
+</div>
