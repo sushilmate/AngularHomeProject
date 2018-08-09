@@ -14,6 +14,7 @@ const httpOptions = {
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  negateMe: boolean;
 
   public rowData: GidGsrMappingViewModel[];
   @ViewChild("agGrid") agGrid: AgGridNg2;
@@ -71,5 +72,8 @@ export class HomeComponent {
 
     /* save to file */
     XLSX.writeFile(wb, 'SheetJS.xlsx');
+  }
+  swithcMe() {
+    this.negateMe = !this.negateMe;
   }
 }

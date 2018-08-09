@@ -1,34 +1,44 @@
-<div>
-  <a href="#default">
-    <img src="barclaysicon.png" style="height:40px" />
-  </a>
-  <label style="font-size:20px;margin-top:10px">PRISM | GID GSR Mapping</label>
-  <a href="#about" style="float:right;margin-top:10px">SM</a>
-</div>
-<br />
-<div>
-  <button type="button" class="btn btn-default btn-sm" (click)="getSelectedRows()">
-    <span class="glyphicon glyphicon-download-alt"></span> Download
-  </button>
 
-  <div style="float:right">
-    <label class="btn btn-default btn-sm">
-      <span class="glyphicon glyphicon-folder-open"></span>&nbsp; Choose File
-      <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
-    </label>
-    <button type="button" class="btn btn-default btn-sm" (click)="upload()">
-      <span class="glyphicon glyphicon-upload"></span> Upload
-    </button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+  <div *ngIf="negateMe" class="middle">
+    <i class="fa fa-refresh fa-spin" style="font-size:24px;color:cornflowerblue"></i>
   </div>
-</div>
-<div style="margin-top:5px">
-  <ag-grid-angular #agGrid
-                   style="width: 100%; height: 500px;"
-                   class="ag-theme-balham"
-                   [rowData]="rowData"
-                   [columnDefs]="columnDefs"
-                   [enableSorting]="true"
-                   [enableFilter]="true"
-                   rowSelection="multiple">
-  </ag-grid-angular>
+  <div class="image">
+    <div>
+      <a href="#default">
+        <img src="barclaysicon.png" style="height:40px" />
+      </a>
+      <label style="font-size:20px;margin-top:10px">PRISM | GID GSR Mapping</label>
+      <a href="#about" style="float:right;margin-top:10px">SM</a>
+    </div>
+    <br />
+    <div>
+      <button type="button" class="btn btn-default btn-sm" (click)="getSelectedRows()">
+        <span class="glyphicon glyphicon-download-alt"></span> Download
+      </button>
+
+      <div style="float:right">
+        <label class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-folder-open"></span>&nbsp; Choose File
+          <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
+        </label>
+        <button type="button" class="btn btn-default btn-sm" (click)="upload()">
+          <span class="glyphicon glyphicon-upload"></span> Upload
+        </button>
+      </div>
+    </div>
+    <div style="margin-top:5px">
+      <ag-grid-angular #agGrid
+                       style="width: 100%; height: 500px;"
+                       class="ag-theme-balham"
+                       [rowData]="rowData"
+                       [columnDefs]="columnDefs"
+                       [enableSorting]="true"
+                       [enableFilter]="true"
+                       rowSelection="multiple">
+      </ag-grid-angular>
+      <button (click)="swithcMe()">Click Me</button>
+    </div>
+  </div>
 </div>
