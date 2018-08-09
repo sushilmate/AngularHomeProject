@@ -6,18 +6,20 @@
   <a href="#about" style="float:right;margin-top:10px">SM</a>
 </div>
 <br />
-<button type="button" class="btn btn-default btn-sm" (click)="getSelectedRows()">
-  <span class="glyphicon glyphicon-download-alt"></span> Download
-</button>
-
-<div style="float:right">
-  <label class="btn btn-default btn-sm">
-    <span class="glyphicon glyphicon-folder-open"></span>  Choose File
-    <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
-  </label>
-  <button type="button" class="btn btn-default btn-sm" (click)="upload()">
-    <span class="glyphicon glyphicon-upload"></span> Upload
+<div>
+  <button type="button" class="btn btn-default btn-sm" (click)="getSelectedRows()">
+    <span class="glyphicon glyphicon-download-alt"></span> Download
   </button>
+
+  <div style="float:right">
+    <label class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-folder-open"></span>&nbsp; Choose File
+      <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
+    </label>
+    <button type="button" class="btn btn-default btn-sm" (click)="upload()">
+      <span class="glyphicon glyphicon-upload"></span> Upload
+    </button>
+  </div>
 </div>
 <div style="margin-top:5px">
   <ag-grid-angular #agGrid
