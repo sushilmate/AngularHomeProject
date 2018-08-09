@@ -20,9 +20,11 @@ export class HomeComponent {
   @ViewChild("agGrid") agGrid: AgGridNg2;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    this.negateMe = true;
     http.get<GidGsrMappingViewModel[]>(baseUrl + 'api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
       this.rowData = result;
     }, error => console.error(error));
+    this.negateMe = false;
   }
 
   columnDefs = [
@@ -43,6 +45,7 @@ export class HomeComponent {
   }
 
   upload() {
+    this.negateMe = true;
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -57,6 +60,7 @@ export class HomeComponent {
       alert(JSON.stringify(XLSX.utils.sheet_to_json(worksheet, { header: 1 })));
     }
     fileReader.readAsArrayBuffer(this.file);
+    this.negateMe = false;
   }
 
 
@@ -72,8 +76,5 @@ export class HomeComponent {
 
     /* save to file */
     XLSX.writeFile(wb, 'SheetJS.xlsx');
-  }
-  swithcMe() {
-    this.negateMe = !this.negateMe;
   }
 }

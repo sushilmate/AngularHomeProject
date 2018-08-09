@@ -4,7 +4,7 @@
   <div *ngIf="negateMe" class="middle">
     <i class="fa fa-refresh fa-spin" style="font-size:24px;color:cornflowerblue"></i>
   </div>
-  <div class="image">
+  <div [ngClass]="{'overlay': negateMe }">
     <div>
       <a href="#default">
         <img src="barclaysicon.png" style="height:40px" />
@@ -38,7 +38,6 @@
                        [enableFilter]="true"
                        rowSelection="multiple">
       </ag-grid-angular>
-      <button (click)="swithcMe()">Click Me</button>
     </div>
   </div>
 </div>
