@@ -6,9 +6,7 @@
   </div>
   <div [ngClass]="{'overlay': negateMe }">
     <div>
-      <a href="#default">
-        <img src="barclaysicon.png" style="height:40px" />
-      </a>
+      <a href="#default"><img src="barclaysicon.png" style="height:40px"/></a>
       <label style="font-size:20px;margin-top:10px">PRISM | GID GSR Mapping</label>
       <a href="#about" style="float:right;margin-top:10px">SM</a>
     </div>
@@ -23,7 +21,7 @@
           <span class="glyphicon glyphicon-folder-open"></span>&nbsp; Choose File
           <input type="file" (change)="incomingfile($event)" accept=".xlsx" class="inputfile">
         </label>
-        <button type="button" class="btn btn-default btn-sm" (click)="upload()">
+        <button type="button" [disabled]="file == null" class="btn btn-default btn-sm" (click)="upload()">
           <span class="glyphicon glyphicon-upload"></span> Upload
         </button>
       </div>
