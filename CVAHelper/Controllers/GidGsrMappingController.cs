@@ -29,23 +29,26 @@ namespace CVAHelper.Controllers
         }
 
         [HttpPost("[action]")]
-        public void UpdateGidGsrMappings([FromBody] GidGsrMappingViewModel gidGsrMappingViewModel)
+        public bool UpdateGidGsrMappings([FromBody] IEnumerable<GidGsrMappingViewModel> gidGsrMappingViewModels)
         {
-            if (gidGsrMappingViewModel == null)
+            if (gidGsrMappingViewModels == null)
             {
+                return false;
                 //return BadRequest("Invalid passed data");
             }
 
             if (!ModelState.IsValid)
             {
+                return false;
                 // return BadRequest(ModelState);
             }
             try
             {
-                _gidGsrMappingRepository.Update(_mapper.Map<GidGsrMappingViewModel, GidGsrMapping>(gidGsrMappingViewModel));
+               return _gidGsrMappingRepository.UpdateOrAddMapping(_mapper.Map<IEnumerable<GidGsrMappingViewModel>, IEnumerable<GidGsrMapping>>(gidGsrMappingViewModels));
             }
             catch (Exception ex)
             {
+                return false;
             }
         }
     }

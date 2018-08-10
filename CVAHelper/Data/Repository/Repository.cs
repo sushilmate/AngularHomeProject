@@ -1,5 +1,6 @@
 ﻿using CVAHelper.Data.DatabaseContext;
 using CVAHelper.Data.Interface;
+using System;
 using System.Collections.Generic;
 
 namespace CVAHelper.Data.Repository
@@ -45,9 +46,10 @@ namespace CVAHelper.Data.Repository
         {
             throw new System.NotImplementedException();
         }
+
         public bool UpdateAll(IEnumerable<T> entities)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }
