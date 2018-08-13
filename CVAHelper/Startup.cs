@@ -24,10 +24,10 @@ namespace CVAHelper
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<PrismDbContext>(options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=CVA;Trusted_Connection=True;"));
             services.AddTransient<IGidGsrMappingRepository, GidGsrMappingRepository>();
             services.AddAutoMapper();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

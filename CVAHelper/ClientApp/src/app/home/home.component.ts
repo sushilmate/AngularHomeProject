@@ -1,8 +1,9 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AgGridNg2 } from "ag-grid-angular";
-import { GidGsrMappingViewModel } from '../../common/types';
 import * as XLSX from 'xlsx';
+
+import { GidGsrMappingModel } from '../../shared/home.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,18 +14,20 @@ const httpOptions = {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
   negateMe: boolean;
-  http: HttpClient;
-  baseUrl: string;
-  public rowData: GidGsrMappingViewModel[];
+  public rowData: GidGsrMappingModel[];
   @ViewChild("agGrid") agGrid: AgGridNg2;
+  arrayBuffer: any;
+  file: File;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    this.http = http;
-    this.baseUrl = baseUrl;
+  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
+  }
+
+  ngOnInit() {
     this.negateMe = true;
-    this.http.get<GidGsrMappingViewModel[]>(this.baseUrl + 'api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
+    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
       this.rowData = result;
     }, error => console.error(error));
     this.negateMe = false;
@@ -36,19 +39,11 @@ export class HomeComponent {
     { headerName: 'GID', field: 'gid', editable: true }
   ];
 
-  defaultColDef = {
-    editable: true
-  }
-
-  arrayBuffer: any;
-  file: File;
-
   incomingfile(event) {
     this.file = event.target.files[0];
   }
 
   upload() {
-    alert("hi");
     try {
       this.negateMe = true;
       let fileReader = new FileReader();
