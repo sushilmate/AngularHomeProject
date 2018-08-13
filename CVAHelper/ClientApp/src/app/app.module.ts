@@ -5,7 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { AppComponent } from './app.component';
+
 import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ]),
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

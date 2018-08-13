@@ -25,27 +25,31 @@
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
     <Compile Remove="ClientApp\src\common\**" />
-    <Compile Remove="ClientApp\src\NewFolder\**" />
     <Content Remove="$(SpaRoot)**" />
     <Content Remove="ClientApp\src\common\**" />
-    <Content Remove="ClientApp\src\NewFolder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Remove="ClientApp\src\common\**" />
-    <EmbeddedResource Remove="ClientApp\src\NewFolder\**" />
     <None Remove="ClientApp\src\common\**" />
-    <None Remove="ClientApp\src\NewFolder\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\shared\gidgsrmapping-data.service.ts" />
+    <None Remove="ClientApp\src\app\core\core.module.ts" />
+    <None Remove="ClientApp\src\app\core\spinner\spinner.component.ts" />
+    <None Remove="ClientApp\src\app\core\spinner\spinner.service.ts" />
+    <None Remove="ClientApp\src\shared\data.service.ts" />
+    <None Remove="ClientApp\src\shared\exception.service.ts" />
     <None Remove="ClientApp\src\shared\user-profile.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\shared\gidgsrmapping-data.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\core.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\exception.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\spinner\spinner.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\spinner\spinner.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\shared\data.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\shared\user-profile.service.ts" />
   </ItemGroup>
 

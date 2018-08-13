@@ -4,6 +4,8 @@ import { AgGridNg2 } from "ag-grid-angular";
 import * as XLSX from 'xlsx';
 
 import { GidGsrMappingModel } from '../../shared/home.model';
+import { Logger } from "../core/logger.service";
+import { SpinnerService } from "../core/spinner/spinner.service";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -22,15 +24,20 @@ export class HomeComponent {
   arrayBuffer: any;
   file: File;
 
-  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string) {
+  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string,
+    private logger: Logger,
+    private spinnerService: SpinnerService) {
   }
 
   ngOnInit() {
-    this.negateMe = true;
+    this.spinnerService.show();
     this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
       this.rowData = result;
-    }, error => console.error(error));
-    this.negateMe = false;
+      this.spinnerService.hide();
+    }, error => {
+      console.error(error);
+      this.spinnerService.hide();
+    });
   }
 
   columnDefs = [
@@ -70,9 +77,6 @@ export class HomeComponent {
   }
 
   downloadExcelFile() {
-    // const selectedNodes = this.agGrid.api.getSelectedNodes();
-    // const selectedData = selectedNodes.map(node => node.data);
-
     const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.rowData);
 
     /* generate workbook and add the worksheet */
