@@ -31,7 +31,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.spinnerService.show();
-    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping1').subscribe(result => {
+    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
       this.rowData = result;
       this.spinnerService.hide();
     });
