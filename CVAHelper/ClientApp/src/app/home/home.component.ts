@@ -31,7 +31,7 @@ export class HomeComponent {
 
   ngOnInit() {
     this.spinnerService.show();
-    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
+    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping1').subscribe(result => {
       this.rowData = result;
       this.spinnerService.hide();
     });
@@ -62,7 +62,7 @@ export class HomeComponent {
         var worksheet = workbook.Sheets[first_sheet_name];
         this.rowData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         alert(JSON.stringify(this.rowData));
-        this.http.post(this.baseUrl + 'api/GidGsrMapping/UpdateGidGsrMappings', this.rowData, httpOptions).subscribe(result => {
+        this.http.post(this.baseUrl + 'api/GidGsrMapping/UpdateGidGsrMappings1', this.rowData, httpOptions).subscribe(result => {
           alert("Upload Result " + result);
         }, error => console.log('There was an error: '));
       }

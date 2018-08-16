@@ -1,5 +1,6 @@
 import { ErrorHandler } from "@angular/core";
 import { HttpErrorResponse } from "@angular/common/http";
+import swal from "sweetalert";
 
 export class ExceptionService implements ErrorHandler {
 
@@ -7,7 +8,7 @@ export class ExceptionService implements ErrorHandler {
 
   handleError(error: any): void {
     if (error instanceof HttpErrorResponse) {
-      alert(error.message);
+      swal("Oops!", error.message, "error");
     } else {
     }     
   }
