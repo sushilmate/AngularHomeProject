@@ -2,6 +2,7 @@ import { Component, Inject, ViewChild, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AgGridNg2 } from "ag-grid-angular";
 import * as XLSX from 'xlsx';
+import Swal from 'sweetalert2';
 
 import { GidGsrMappingModel } from '../../shared/home.model';
 import { Logger } from "../core/logger.service";
@@ -82,5 +83,18 @@ export class HomeComponent {
 
     /* save to file */
     XLSX.writeFile(wb, 'SheetJS.xlsx');
+  }
+
+  saveGidGsrMappings() {
+    var updatedGidGsrMappings = this.agGrid.api.getEditingCells();
+    updatedGidGsrMappings.forEach(function (cellDef) { alert(cellDef.column); });
+  }
+
+  deleteGidGsrMappings() {
+    Swal({
+      title: "Are you sure?",
+      text: "Are you sure that you want to delete this file?",
+      showCancelButton: true
+    });
   }
 }
