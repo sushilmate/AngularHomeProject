@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
 using AutoMapper;
 using CVAHelper.Data.Interface;
 using CVAHelper.Data.Model;
 using CVAHelper.Data.ViewModel;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace CVAHelper.Controllers
 {
@@ -44,7 +44,7 @@ namespace CVAHelper.Controllers
             }
             try
             {
-               return _gidGsrMappingRepository.UpdateOrAddMapping(_mapper.Map<IEnumerable<GidGsrMappingViewModel>, IEnumerable<GidGsrMapping>>(gidGsrMappingViewModels));
+                return _gidGsrMappingRepository.UpdateOrAddMapping(_mapper.Map<IEnumerable<GidGsrMappingViewModel>, IEnumerable<GidGsrMapping>>(gidGsrMappingViewModels));
             }
             catch (Exception ex)
             {

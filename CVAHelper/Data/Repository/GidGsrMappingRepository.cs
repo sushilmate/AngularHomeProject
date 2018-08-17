@@ -11,6 +11,7 @@ namespace CVAHelper.Data.Repository
         public GidGsrMappingRepository(PrismDbContext context) : base(context)
         {
         }
+
         public IEnumerable<GidGsrMapping> GetAllMappingsWithTenor()
         {
             return _context.GidGsrMapping;

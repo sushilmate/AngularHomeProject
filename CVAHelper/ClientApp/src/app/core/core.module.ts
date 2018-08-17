@@ -10,8 +10,8 @@ import { ExceptionService } from './exception.service';
   imports: [
     CommonModule // we use ngFor
   ],
-  exports: [ SpinnerComponent],
-  declarations: [ SpinnerComponent],
+  exports: [SpinnerComponent],
+  declarations: [SpinnerComponent],
   providers: [Logger, SpinnerService, { provide: ErrorHandler, useClass: ExceptionService }]
 })
 export class CoreModule { }

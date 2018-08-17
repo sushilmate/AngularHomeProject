@@ -18,6 +18,7 @@ namespace CVAHelper.Data.Repository
         {
             _context.SaveChanges();
         }
+
         public void Create(T entity)
         {
             _context.Add(entity);

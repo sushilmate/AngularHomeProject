@@ -6,6 +6,7 @@ namespace CVAHelper.Data.Interface
     public interface IGidGsrMappingRepository : IRepository<GidGsrMapping>
     {
         IEnumerable<GidGsrMapping> GetAllMappingsWithTenor();
+
         bool UpdateOrAddMapping(IEnumerable<GidGsrMapping> gidGsrMappings);
     }
 }
