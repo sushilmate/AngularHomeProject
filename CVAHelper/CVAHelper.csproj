@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\core\core.module.ts" />
+    <None Remove="ClientApp\src\app\core\module-import-guard.ts" />
     <None Remove="ClientApp\src\app\core\spinner\spinner.component.ts" />
     <None Remove="ClientApp\src\app\core\spinner\spinner.service.ts" />
     <None Remove="ClientApp\src\shared\data.service.ts" />
@@ -47,6 +48,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\core\core.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\exception.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\core\module-import-guard.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\spinner\spinner.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\core\spinner\spinner.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\shared\data.service.ts" />
