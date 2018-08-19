@@ -6,7 +6,7 @@
     {
         void Create(T entity);
 
-        void Delete(T entity);
+        void Delete(IEnumerable<int> ids);
 
         IEnumerable<T> GetAll();
 

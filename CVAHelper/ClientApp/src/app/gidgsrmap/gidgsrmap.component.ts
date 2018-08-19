@@ -88,9 +88,15 @@ export class GidGsrMapComponent {
 
   deleteGidGsrMappings() {
     Swal({
-      title: "Are you sure?",
-      text: "Are you sure that you want to delete this file?",
+      title: "Delete GID GSR Mapping",
+      text: "Are you sure that you want to delete selected record?",
       showCancelButton: true
+    }).then((result) => {
+      if (result.value) {
+        var selectedNodes = this.agGrid.api.getSelectedNodes();
+        var selectedIds = selectedNodes.map(node => node.data);
+        this.dataService.deleteGidGsrMappings(selectedIds.map(node => node.id));
+      }
     });
   }
 }

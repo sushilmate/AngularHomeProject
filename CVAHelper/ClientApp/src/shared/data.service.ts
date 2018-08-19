@@ -12,7 +12,6 @@ const httpOptions = {
 
 @Injectable()
 export class DataService {
-
   private http: HttpClient;
   private baseUrl: string;
 
@@ -22,14 +21,20 @@ export class DataService {
   }
 
   getGidGsrMapping(): Observable<GidGsrMappingModel[]> {
-    return this.http.get<GidGsrMappingModel[]>(this.baseUrl + 'GetGidGsrMapping').pipe(tap(data => console.log(data)),
+    return this.http.get<GidGsrMappingModel[]>(this.baseUrl + 'GetGidGsrMapping').pipe(
       catchError(this.handleError("getMapping")));
   }
 
   updateGidGsrMappings(gidgsrMappings: GidGsrMappingModel[]) {
-    this.http.post(this.baseUrl + 'UpdateGidGsrMappings', gidgsrMappings, httpOptions).subscribe(result => {
-      alert("Upload Result " + result);
-    }, error => this.handleError("updateGidGsrMappings"));
+    return this.http.post(this.baseUrl + 'UpdateGidGsrMappings', gidgsrMappings, httpOptions).pipe(
+      catchError(this.handleError("updateGidGsrMappings")));
+  }
+
+  public deleteGidGsrMappings(gidGsrMappinngIds: number[]) {
+    alert(gidGsrMappinngIds);
+    this.http.delete(this.baseUrl + "DeleteGidGsrMappings/" + gidGsrMappinngIds, httpOptions).subscribe(result => {
+      alert(result);
+    });
   }
 
   private handleError(operation: String) {

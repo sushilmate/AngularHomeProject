@@ -51,5 +51,11 @@ namespace CVAHelper.Controllers
                 return false;
             }
         }
+
+        [HttpDelete("[action]")]
+        public void DeleteGidGsrMappings([FromBody] int[] gidGsrMappingIds)
+        {
+            _gidGsrMappingRepository.Delete(gidGsrMappingIds);
+        }
     }
 }

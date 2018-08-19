@@ -52,5 +52,10 @@ namespace CVAHelper.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        public void Delete(IEnumerable<int> ids)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
