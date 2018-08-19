@@ -4,7 +4,7 @@ import { AgGridNg2 } from "ag-grid-angular";
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 
-import { GidGsrMappingModel } from '../../shared/home.model';
+import { GidGsrMappingModel } from '../../shared/gidgsrmap.model';
 import { Logger } from "../core/logger.service";
 import { SpinnerService } from "../core/spinner/spinner.service";
 
@@ -13,12 +13,12 @@ const httpOptions = {
 };
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-gidgsrmap',
+  templateUrl: './gidgsrmap.component.html',
+  styleUrls: ['./gidgsrmap.component.css']
 })
 
-export class HomeComponent {
+export class GidGsrMapComponent {
   negateMe: boolean;
   public rowData: GidGsrMappingModel[];
   @ViewChild("agGrid") agGrid: AgGridNg2;
