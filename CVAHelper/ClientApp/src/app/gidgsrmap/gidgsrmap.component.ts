@@ -1,16 +1,12 @@
 import { Component, Inject, ViewChild, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AgGridNg2 } from "ag-grid-angular";
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 
 import { GidGsrMappingModel } from '../../shared/gidgsrmap.model';
+import { DataService } from '../../shared/data.service';
 import { Logger } from "../core/logger.service";
 import { SpinnerService } from "../core/spinner/spinner.service";
-
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 
 @Component({
   selector: 'app-gidgsrmap',
@@ -19,23 +15,25 @@ const httpOptions = {
 })
 
 export class GidGsrMapComponent {
-  negateMe: boolean;
-  public rowData: GidGsrMappingModel[];
+  private negateMe: boolean;
+  private rowData: GidGsrMappingModel[];
   @ViewChild("agGrid") agGrid: AgGridNg2;
-  arrayBuffer: any;
-  file: File;
+  private arrayBuffer: any;
+  private file: File;
+  private dataService: DataService;
 
-  constructor(public http: HttpClient, @Inject('BASE_URL') public baseUrl: string,
-    private logger: Logger,
+  constructor(dataService: DataService, private logger: Logger,
     private spinnerService: SpinnerService) {
+    this.dataService = dataService;
   }
 
   ngOnInit() {
     this.spinnerService.show();
-    this.http.get<GidGsrMappingModel[]>('api/GidGsrMapping/GetGidGsrMapping').subscribe(result => {
+
+    this.dataService.getGidGsrMapping().subscribe(result => {
       this.rowData = result;
       this.spinnerService.hide();
-    });
+    }, error => this.spinnerService.hide());
   }
 
   columnDefs = [
@@ -63,9 +61,7 @@ export class GidGsrMapComponent {
         var worksheet = workbook.Sheets[first_sheet_name];
         this.rowData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         alert(JSON.stringify(this.rowData));
-        this.http.post(this.baseUrl + 'api/GidGsrMapping/UpdateGidGsrMappings', this.rowData, httpOptions).subscribe(result => {
-          alert("Upload Result " + result);
-        }, error => console.log('There was an error: '));
+        this.dataService.updateGidGsrMappings(this.rowData);
       }
       fileReader.readAsArrayBuffer(this.file);
       this.negateMe = false;

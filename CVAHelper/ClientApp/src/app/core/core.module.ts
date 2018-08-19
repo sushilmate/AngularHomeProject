@@ -6,6 +6,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
 import { SpinnerService } from './spinner/spinner.service';
 import { ExceptionService } from './exception.service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { DataService } from '../../shared/data.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { throwIfAlreadyLoaded } from './module-import-guard';
   ],
   exports: [SpinnerComponent],
   declarations: [SpinnerComponent],
-  providers: [Logger, SpinnerService, { provide: ErrorHandler, useClass: ExceptionService }]
+  providers: [DataService, Logger, SpinnerService, { provide: ErrorHandler, useClass: ExceptionService }]
 })
 
 export class CoreModule {
