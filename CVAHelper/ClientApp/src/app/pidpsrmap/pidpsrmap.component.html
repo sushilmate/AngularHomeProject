@@ -3,7 +3,7 @@
   <div [ngClass]="{'overlay': negateMe }">
     <div>
       <a href="#default"><img src="barclaysicon.png" style="height:40px" /></a>
-      <label style="font-size:20px;margin-top:10px">PRISM | GID GSR Mapping</label>
+      <label style="font-size:20px;margin-top:10px">PRISM | PID PSR Mapping</label>
       <a href="#about" style="float:right;margin-top:10px">SM</a>
     </div>
     <br />
@@ -11,10 +11,10 @@
       <button type="button" class="btn btn-default btn-sm" (click)="downloadExcelFile()">
         <span class="glyphicon glyphicon-download-alt"></span> Download
       </button>
-      <button type="button" class="btn btn-default btn-sm" (click)="saveGidGsrMappings()">
+      <button type="button" class="btn btn-default btn-sm" (click)="savePidPsrMappings()">
         <i class="fa fa-save" style="font-size:16px"></i> Save
       </button>
-      <button type="button" class="btn btn-default btn-sm" (click)="deleteGidGsrMappings()">
+      <button type="button" class="btn btn-default btn-sm" (click)="deletePidPsrMappings()">
         <i class="fa fa-trash" style="font-size:16px"></i> Delete
       </button>
       <div style="float:right">

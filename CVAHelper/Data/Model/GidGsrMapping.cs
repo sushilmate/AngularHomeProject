@@ -1,6 +1,6 @@
 ﻿namespace CVAHelper.Data.Model
 {
-    public partial class GidGsrMapping
+    public partial class PidPsrMapping
     {
         public int Id { get; set; }
 

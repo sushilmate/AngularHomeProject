@@ -6,20 +6,20 @@ import { RouterModule } from '@angular/router';
 import { AgGridModule } from 'ag-grid-angular';
 import { AppComponent } from './app.component';
 
-import { GidGsrMapComponent } from './gidgsrmap/gidgsrmap.component';
+import { PidPsrMapComponent } from './pidpsrmap/pidpsrmap.component';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GidGsrMapComponent
+    PidPsrMapComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: GidGsrMapComponent, pathMatch: 'full' }
+      { path: '', component: PidPsrMapComponent, pathMatch: 'full' }
     ]),
     AgGridModule.withComponents([]),
     CoreModule

@@ -8,7 +8,7 @@ namespace CVAHelper
     {
         public MappingProfile()
         {
-            CreateMap<GidGsrMapping, GidGsrMappingViewModel>();
+            CreateMap<PidPsrMapping, PidPsrMappingViewModel>();
         }
     }
 }

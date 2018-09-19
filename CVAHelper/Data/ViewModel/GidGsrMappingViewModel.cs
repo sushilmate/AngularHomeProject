@@ -1,6 +1,6 @@
 ﻿namespace CVAHelper.Data.ViewModel
 {
-    public class GidGsrMappingViewModel
+    public class PidPsrMappingViewModel
     {
         public int Id { get; set; }
 

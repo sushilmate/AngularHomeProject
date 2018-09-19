@@ -26,7 +26,7 @@ namespace CVAHelper
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddDbContext<PrismDbContext>(options => options.UseSqlServer(@"Server=.\SQLEXPRESS;Database=CVA;Trusted_Connection=True;"));
-            services.AddTransient<IGidGsrMappingRepository, GidGsrMappingRepository>();
+            services.AddTransient<IPidPsrMappingRepository, PidPsrMappingRepository>();
             services.AddAutoMapper();
 
             // In production, the Angular files will be served from this directory

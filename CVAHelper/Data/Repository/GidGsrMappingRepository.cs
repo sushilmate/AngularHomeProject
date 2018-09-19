@@ -6,18 +6,18 @@ using System.Collections.Generic;
 
 namespace CVAHelper.Data.Repository
 {
-    public class GidGsrMappingRepository : Repository<GidGsrMapping>, IGidGsrMappingRepository
+    public class PidPsrMappingRepository : Repository<PidPsrMapping>, IPidPsrMappingRepository
     {
-        public GidGsrMappingRepository(PrismDbContext context) : base(context)
+        public PidPsrMappingRepository(PrismDbContext context) : base(context)
         {
         }
 
-        public IEnumerable<GidGsrMapping> GetAllMappingsWithTenor()
+        public IEnumerable<PidPsrMapping> GetAllMappingsWithTenor()
         {
-            return _context.GidGsrMapping;
+            return _context.PidPsrMapping;
         }
 
-        public bool UpdateOrAddMapping(IEnumerable<GidGsrMapping> entities)
+        public bool UpdateOrAddMapping(IEnumerable<PidPsrMapping> entities)
         {
             try
             {

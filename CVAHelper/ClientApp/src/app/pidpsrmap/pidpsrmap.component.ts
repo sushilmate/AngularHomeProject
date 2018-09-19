@@ -3,20 +3,20 @@ import { AgGridNg2 } from "ag-grid-angular";
 import * as XLSX from 'xlsx';
 import Swal from 'sweetalert2';
 
-import { GidGsrMappingModel } from '../../shared/gidgsrmap.model';
+import { PidPsrMappingModel } from '../../shared/pidpsrmap.model';
 import { DataService } from '../../shared/data.service';
 import { Logger } from "../core/logger.service";
 import { SpinnerService } from "../core/spinner/spinner.service";
 
 @Component({
-  selector: 'app-gidgsrmap',
-  templateUrl: './gidgsrmap.component.html',
-  styleUrls: ['./gidgsrmap.component.css']
+  selector: 'app-pidpsrmap',
+  templateUrl: './pidpsrmap.component.html',
+  styleUrls: ['./pidpsrmap.component.css']
 })
 
-export class GidGsrMapComponent {
+export class PidPsrMapComponent {
   private negateMe: boolean;
-  private rowData: GidGsrMappingModel[];
+  private rowData: PidPsrMappingModel[];
   @ViewChild("agGrid") agGrid: AgGridNg2;
   private arrayBuffer: any;
   private file: File;
@@ -30,7 +30,7 @@ export class GidGsrMapComponent {
   ngOnInit() {
     this.spinnerService.show();
 
-    this.dataService.getGidGsrMapping().subscribe(result => {
+    this.dataService.getPidPsrMapping().subscribe(result => {
       this.rowData = result;
       this.spinnerService.hide();
     }, error => this.spinnerService.hide());
@@ -61,7 +61,7 @@ export class GidGsrMapComponent {
         var worksheet = workbook.Sheets[first_sheet_name];
         this.rowData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
         alert(JSON.stringify(this.rowData));
-        this.dataService.updateGidGsrMappings(this.rowData);
+        this.dataService.updatePidPsrMappings(this.rowData);
       }
       fileReader.readAsArrayBuffer(this.file);
       this.negateMe = false;
@@ -81,12 +81,12 @@ export class GidGsrMapComponent {
     XLSX.writeFile(wb, 'SheetJS.xlsx');
   }
 
-  saveGidGsrMappings() {
-    var updatedGidGsrMappings = this.agGrid.api.getEditingCells();
-    updatedGidGsrMappings.forEach(function (cellDef) { alert(cellDef.column); });
+  savePidPsrMappings() {
+    var updatedPidPsrMappings = this.agGrid.api.getEditingCells();
+    updatedPidPsrMappings.forEach(function (cellDef) { alert(cellDef.column); });
   }
 
-  deleteGidGsrMappings() {
+  deletePidPsrMappings() {
     Swal({
       title: "Delete GID GSR Mapping",
       text: "Are you sure that you want to delete selected record?",
@@ -95,7 +95,7 @@ export class GidGsrMapComponent {
       if (result.value) {
         var selectedNodes = this.agGrid.api.getSelectedNodes();
         var selectedIds = selectedNodes.map(node => node.data);
-        this.dataService.deleteGidGsrMappings(selectedIds.map(node => node.id));
+        this.dataService.deletePidPsrMappings(selectedIds.map(node => node.id));
       }
     });
   }

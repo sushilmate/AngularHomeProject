@@ -14,7 +14,7 @@ namespace CVAHelper.Data.DatabaseContext
         {
         }
 
-        public virtual DbSet<GidGsrMapping> GidGsrMapping { get; set; }
+        public virtual DbSet<PidPsrMapping> PidPsrMapping { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,7 +26,7 @@ namespace CVAHelper.Data.DatabaseContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<GidGsrMapping>(entity =>
+            modelBuilder.Entity<PidPsrMapping>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 

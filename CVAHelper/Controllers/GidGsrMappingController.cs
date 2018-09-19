@@ -9,27 +9,27 @@ using System.Collections.Generic;
 namespace CVAHelper.Controllers
 {
     [Route("api/[controller]")]
-    public class GidGsrMappingController : Controller
+    public class PidPsrMappingController : Controller
     {
         private readonly IMapper _mapper;
 
-        public GidGsrMappingController(IGidGsrMappingRepository gidGsrMappingRepository, IMapper mapper)
+        public PidPsrMappingController(IPidPsrMappingRepository gidGsrMappingRepository, IMapper mapper)
         {
             _gidGsrMappingRepository = gidGsrMappingRepository;
             _mapper = mapper;
         }
 
-        private IGidGsrMappingRepository _gidGsrMappingRepository;
+        private IPidPsrMappingRepository _gidGsrMappingRepository;
 
         [HttpGet("[action]")]
-        public IEnumerable<GidGsrMappingViewModel> GetGidGsrMapping()
+        public IEnumerable<PidPsrMappingViewModel> GetPidPsrMapping()
         {
             var gidGsrMappings = _gidGsrMappingRepository.GetAllMappingsWithTenor();
-            return _mapper.Map<IEnumerable<GidGsrMapping>, IEnumerable<GidGsrMappingViewModel>>(gidGsrMappings);
+            return _mapper.Map<IEnumerable<PidPsrMapping>, IEnumerable<PidPsrMappingViewModel>>(gidGsrMappings);
         }
 
         [HttpPost("[action]")]
-        public bool UpdateGidGsrMappings([FromBody] IEnumerable<GidGsrMappingViewModel> gidGsrMappingViewModels)
+        public bool UpdatePidPsrMappings([FromBody] IEnumerable<PidPsrMappingViewModel> gidGsrMappingViewModels)
         {
             if (gidGsrMappingViewModels == null)
             {
@@ -44,7 +44,7 @@ namespace CVAHelper.Controllers
             }
             try
             {
-                return _gidGsrMappingRepository.UpdateOrAddMapping(_mapper.Map<IEnumerable<GidGsrMappingViewModel>, IEnumerable<GidGsrMapping>>(gidGsrMappingViewModels));
+                return _gidGsrMappingRepository.UpdateOrAddMapping(_mapper.Map<IEnumerable<PidPsrMappingViewModel>, IEnumerable<PidPsrMapping>>(gidGsrMappingViewModels));
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace CVAHelper.Controllers
         }
 
         [HttpDelete("[action]")]
-        public void DeleteGidGsrMappings([FromBody] int[] gidGsrMappingIds)
+        public void DeletePidPsrMappings([FromBody] int[] gidGsrMappingIds)
         {
             _gidGsrMappingRepository.Delete(gidGsrMappingIds);
         }

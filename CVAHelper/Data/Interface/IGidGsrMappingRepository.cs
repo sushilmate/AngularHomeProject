@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace CVAHelper.Data.Interface
 {
-    public interface IGidGsrMappingRepository : IRepository<GidGsrMapping>
+    public interface IPidPsrMappingRepository : IRepository<PidPsrMapping>
     {
-        IEnumerable<GidGsrMapping> GetAllMappingsWithTenor();
+        IEnumerable<PidPsrMapping> GetAllMappingsWithTenor();
 
-        bool UpdateOrAddMapping(IEnumerable<GidGsrMapping> gidGsrMappings);
+        bool UpdateOrAddMapping(IEnumerable<PidPsrMapping> gidGsrMappings);
     }
 }

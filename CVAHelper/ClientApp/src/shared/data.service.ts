@@ -4,7 +4,7 @@ import { Inject } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { catchError, tap } from 'rxjs/operators';
 
-import { GidGsrMappingModel } from "./gidgsrmap.model";
+import { PidPsrMappingModel } from "./pidpsrmap.model";
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -17,22 +17,22 @@ export class DataService {
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     this.http = http;
-    this.baseUrl = baseUrl + 'api/GidGsrMapping/';
+    this.baseUrl = baseUrl + 'api/PidPsrMapping/';
   }
 
-  getGidGsrMapping(): Observable<GidGsrMappingModel[]> {
-    return this.http.get<GidGsrMappingModel[]>(this.baseUrl + 'GetGidGsrMapping').pipe(
+  getPidPsrMapping(): Observable<PidPsrMappingModel[]> {
+    return this.http.get<PidPsrMappingModel[]>(this.baseUrl + 'GetPidPsrMapping').pipe(
       catchError(this.handleError("getMapping")));
   }
 
-  updateGidGsrMappings(gidgsrMappings: GidGsrMappingModel[]) {
-    return this.http.post(this.baseUrl + 'UpdateGidGsrMappings', gidgsrMappings, httpOptions).pipe(
-      catchError(this.handleError("updateGidGsrMappings")));
+  updatePidPsrMappings(pidpsrmappings: PidPsrMappingModel[]) {
+    return this.http.post(this.baseUrl + 'UpdatePidPsrMappings', pidpsrmappings, httpOptions).pipe(
+      catchError(this.handleError("updatePidPsrMappings")));
   }
 
-  public deleteGidGsrMappings(gidGsrMappinngIds: number[]) {
+  public deletePidPsrMappings(gidGsrMappinngIds: number[]) {
     alert(gidGsrMappinngIds);
-    this.http.delete(this.baseUrl + "DeleteGidGsrMappings/" + gidGsrMappinngIds, httpOptions).subscribe(result => {
+    this.http.delete(this.baseUrl + "DeletePidPsrMappings/" + gidGsrMappinngIds, httpOptions).subscribe(result => {
       alert(result);
     });
   }
